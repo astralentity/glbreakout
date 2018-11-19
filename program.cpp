@@ -15,6 +15,7 @@ Game Breakout (SCREEN_WIDTH, SCREEN_HEIGHT);
 
 int main(int argc, char *argv[]) {
   glfwInit();
+  glfwWindowHint(GLFW_OPENGL_DEBUG_CONTEXT, GL_TRUE);
   glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
   glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
   glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
@@ -30,8 +31,8 @@ int main(int argc, char *argv[]) {
   glfwSetKeyCallback(window, key_callback);
 
   // OpenGL configuration
-  glViewport(0,0, SCREEN_WIDTH, SCREEN_HEIGHT);
-  glEnable(GL_CULL_FACE);
+  glViewport(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+  glDisable(GL_CULL_FACE);
   glEnable(GL_BLEND);
   glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
@@ -61,7 +62,7 @@ int main(int argc, char *argv[]) {
     Breakout.Update(deltaTime);
 
     // Render
-    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+    glClearColor(0.3f, 0.5f, 0.5f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
     Breakout.Render();
 
